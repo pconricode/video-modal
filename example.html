@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Example</title>
+  <link rel="stylesheet" href="css/example.css">
+</head>
+
+<body>
+
+  <!-- https://www.youtube.com/watch?v=uKVVSwXdLr0 -->
+
+
+    <div class="grid">
+      <img src="images/img1.png">
+      <img src="images/img2.png">
+      <img src="images/img3.png">
+      <img src="images/img4.png">
+      <img src="images/img5.png">
+      <img src="images/img1.png">
+      <img src="images/img2.png">
+      <img src="images/img3.png">
+      <img src="images/img4.png">
+    </div>
+
+    <script>
+      const lightbox = document.createElement('div')
+      lightbox.id = 'lightbox'
+      document.body.appendChild(lightbox)
+
+      const images = document.querySelectorAll('img')
+      images.forEach(image => {
+        image.addEventListener('click', e => {
+          lightbox.classList.add('active')
+          const img = document.createElement('img')
+          img.src = image.src
+          while (lightbox.firstChild) {
+            lightbox.removeChild(lightbox.firstChild)
+          }
+          lightbox.appendChild(img)
+        })
+      })
+
+      lightbox.addEventListener('click', e => {
+        if (e.target !== e.currentTarget) return
+        lightbox.classList.remove('active')
+      })
+    </script>
+
+
+</body>
+
+</html>
